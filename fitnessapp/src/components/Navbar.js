@@ -24,6 +24,21 @@ const Navbar = () => {
     let status = !arrow;
     setArrow(status);
   };
+
+  function handleclick()
+  {
+     window.location.href="/about"
+  }
+
+  function handleclicklogin()
+  {
+     window.location.href="/login"
+  }
+
+  // function handleclickhome()
+  // {
+  //   window.location.href="/homepagedata"
+  // }
   return (
     <Box w="100%" m="auto" p="2.5%" size={["xs", "sm", "md", "lg"]}>
       <Flex justifyContent="space-between" alignItems="center">
@@ -100,6 +115,7 @@ const Navbar = () => {
                 fontSize="xl"
                 fontWeight="400"
                 _hover={{ color: "gray" }}
+                
               >
                 <Link to="/forums">Forums</Link>
               </Text>
@@ -109,6 +125,7 @@ const Navbar = () => {
                 fontSize="xl"
                 fontWeight="400"
                 _hover={{ color: "gray" }}
+                onClick={handleclick}
               >
                 <Link to="/about">About</Link>
               </Text>
@@ -121,6 +138,7 @@ const Navbar = () => {
                 bgColor="white"
                 fontWeight="600"
                 fontSize="lg"
+                onClick={handleclicklogin}
               >
                 <Link to="/login">Login</Link>
               </Button>
@@ -135,6 +153,7 @@ const Navbar = () => {
             bgColor="white"
             fontWeight="500"
             fontSize="md"
+            onClick={handleclicklogin}
           >
             <Link to="/login">Login</Link>
           </Button>

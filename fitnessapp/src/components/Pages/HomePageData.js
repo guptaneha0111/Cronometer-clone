@@ -1,6 +1,7 @@
 import { Box, Button, Flex, Heading, Image, Text } from "@chakra-ui/react";
 import React from "react";
 import { Link } from "react-router-dom";
+import {useNavigate} from "react-router-dom"
 
 import media1 from "../Assets/media-mention-1.png";
 import media2 from "../Assets/media-mention-2.png";
@@ -20,9 +21,17 @@ import devices from "../Assets/devices-p-1600.png";
 import crono_graphic from "../Assets/crono-pro-graphic.png";
 import green_logo from "../Assets/cronometer-pro-logo-green.png";
 import staff from "../Assets/cronometer-staff-2-p-1600.jpeg";
+import Navbar from "../Navbar";
+import Footer from "../Footer";
 const HomePageData = () => {
+  const navigate= useNavigate();
+  function handleclick()
+  {
+    window.location.href= '/signin'
+  }
   return (
     <>
+    <Navbar/>
       <Flex
         w={["100%", "100%", "100%", "100%"]}
         m="auto"
@@ -60,6 +69,7 @@ const HomePageData = () => {
               colorScheme="orange"
               p={["3", "4", "5", "6"]}
               bgColor="#44d07b"
+              onClick={handleclick}
             >
               <Link to="/signin">Sign Up - It's Free!</Link>
             </Button>
@@ -369,6 +379,7 @@ const HomePageData = () => {
               p={["5", "6", "7"]}
               bgColor="#44d07b"
               w="100%"
+              onClick={handleclick}
             >
               <Link to="/signin">Sign Up - It's Free!</Link>
             </Button>
@@ -610,6 +621,7 @@ const HomePageData = () => {
           <Link to="/about">Become an Affiliate</Link>
         </Button>
       </Box>
+      <Footer/>
     </>
   );
 };

@@ -1,0 +1,121 @@
+*{
+    margin:0;
+    padding:0;
+    text-decoration: none;
+}
+.container{
+    display:flex;
+
+}
+main{
+    width: 100%;
+    padding: 20px;
+}
+.sidebar{
+    background: #000;
+    color: #fff;
+    height: 250vh;
+    width: 500px;
+    transition: all 0.5s;
+    border-radius: 10px;
+}
+.top_section{
+    display: flex;
+    align-items:center;
+    padding:20px 15px;
+}
+.logo{
+   width: 30%;
+}
+.bars{
+    display: flex;
+    font-size: 25px;
+    margin-left: 50px;
+}
+.link{
+    display: flex;
+    color: #fff;
+    padding: 10px 15px;
+    gap: 15px;
+    transition: all 0.5s;
+}
+.link:hover{
+    background:lightskyblue;
+    color: #000;
+    transition: all 0.5s;
+}
+.active{
+    background: lightskyblue;
+    color: #000;
+}
+.icon, .link_text{
+    font-size: 20px;
+}
+.icon{
+    margin-top: 5px;
+}
+.navbardashboard{
+    height: 30px;
+    border: 1px ;
+    background-color: rgb(245, 237, 237);
+    
+}
+.secondnav{
+    display: flex;
+    width: 100%;
+    margin: auto;
+    border: 1px solid red;
+    height: 50px;
+    margin-top: 20px;
+}
+.dashboardh1{
+   
+    font-size: 28px;
+    margin-left: 50px;
+    margin-top: 30px;
+}
+.flexdiv{
+    display: flex;
+}
+.chartdiv{
+    display: flex;
+}
+.imgchart{
+    width: 80%;
+    margin-top: 30px;
+}
+
+.imgdiv{
+    margin-left: 100px;
+    margin-top: 30px;
+    /* border: 1px solid red; */
+}
+.h1text{
+    margin-top: 10px;
+}
+.buttonlisten{
+    margin-top: 20px;
+    border: 1px solid #005c5c;
+    background-color: #005c5c;
+    cursor: pointer;
+    border-radius: 7px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 15px;
+    color: white;
+    width: 30%;
+    height: 50px;
+}
+/* .shadowd{
+    border: 1px solid #f0f2fa;
+    border-radius: 10px;
+    background: #fff;
+    padding: 24px;
+    box-shadow: #7779861a 0 3px 20px;
+} */
+
+.mainnav{
+    text-align: right;
+    margin-right: 50px;
+    height: 30px;
+}
