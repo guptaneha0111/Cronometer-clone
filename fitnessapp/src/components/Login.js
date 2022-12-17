@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import {useNavigate, NavLink} from "react-router-dom"
 
-let DataArray=JSON.parse(localStorage.getItem("userdata"))
+let DataArray=JSON.parse(localStorage.getItem("userdata")) || []
 console.log(DataArray)
 
 
@@ -44,9 +44,10 @@ const Login = () => {
     if(actualdata.email==DataArray[i].email && actualdata.password==DataArray[i].password)
     {
       console.log(actualdata)
-      localStorage.setItem("email", (DataArray[i].email))
+      
       document.getElementById("form_data").reset()
       setError({status:true, msg:"Login Success", type:"seccess"})
+      localStorage.setItem("email", (DataArray[i].email))
       navigate("/dashboard")
     }
     else{
