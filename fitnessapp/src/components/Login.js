@@ -1,8 +1,8 @@
 
-import { Box, Button, Image, Img, Text, Input,Flex } from "@chakra-ui/react";
+import { Box, Button, Image, Img, Text, Input,Flex, Alert,AlertIcon,AlertTitle,AlertDescription, Stack, } from "@chakra-ui/react";
 import React, { useState } from "react";
 import styled from "styled-components";
-
+import {useNavigate, NavLink} from "react-router-dom"
 
 
 
@@ -19,6 +19,36 @@ const Login = () => {
   function handlesign()
   {
     window.location.href="/signin"
+  }
+  
+  const [error, setError] = useState({
+    status:false,
+    msg:"",
+    type:""
+  })
+
+  const navigate= useNavigate();
+  
+
+  const handlesubmit= (e)=>{
+    e.preventDefault();
+    const data= new FormData(e.currentTarget)
+    const actualdata={
+      email:data.get('email'),
+      password: data.get('password')
+    }
+    
+    if(actualdata.email && actualdata.password)
+    {
+      console.log(actualdata)
+      document.getElementById("form_data").reset()
+      setError({status:true, msg:"Login Success", type:"seccess"})
+      navigate("/")
+    }
+    else{
+      console.log("all fields are required");
+      setError({status:false, msg:"All Fields are Required", type:"error"})
+    }
   }
   
   return (
@@ -51,7 +81,7 @@ const Login = () => {
         >
           <Text fontSize="28px" fontWeight="800">Welcome Back</Text>
         </Box>
-        <form>
+        <form onSubmit={handlesubmit} id="form_data">
           <Box w={"100%"} m={"auto"} py={5}>
             <Inputs
               type="email"
@@ -105,9 +135,13 @@ const Login = () => {
                   Forgot your password?
                 </Text>
               </Box>
+             
             </Box>
           </Box>
         </form>
+        {error.status ? <Alert status="success"> <AlertIcon />{error.msg}</Alert> :
+         <Alert status="error"> <AlertIcon />{error.msg}</Alert>}
+      
       </Box>
     </Box>
     </>

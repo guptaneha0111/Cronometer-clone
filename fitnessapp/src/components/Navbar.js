@@ -115,7 +115,7 @@ const Navbar = () => {
                 fontSize="xl"
                 fontWeight="400"
                 _hover={{ color: "gray" }}
-                onClick={handleclick}
+                
               >
                 <Link to="/forums">Forums</Link>
               </Text>
@@ -125,6 +125,7 @@ const Navbar = () => {
                 fontSize="xl"
                 fontWeight="400"
                 _hover={{ color: "gray" }}
+                onClick={handleclick}
               >
                 <Link to="/about">About</Link>
               </Text>

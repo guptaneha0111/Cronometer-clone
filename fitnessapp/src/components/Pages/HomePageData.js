@@ -21,6 +21,8 @@ import devices from "../Assets/devices-p-1600.png";
 import crono_graphic from "../Assets/crono-pro-graphic.png";
 import green_logo from "../Assets/cronometer-pro-logo-green.png";
 import staff from "../Assets/cronometer-staff-2-p-1600.jpeg";
+import Navbar from "../Navbar";
+import Footer from "../Footer";
 const HomePageData = () => {
   const navigate= useNavigate();
   function handleclick()
@@ -29,6 +31,7 @@ const HomePageData = () => {
   }
   return (
     <>
+    <Navbar/>
       <Flex
         w={["100%", "100%", "100%", "100%"]}
         m="auto"
@@ -618,6 +621,7 @@ const HomePageData = () => {
           <Link to="/about">Become an Affiliate</Link>
         </Button>
       </Box>
+      <Footer/>
     </>
   );
 };

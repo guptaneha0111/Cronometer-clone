@@ -1,7 +1,7 @@
-import { Avatar, Box, Flex, Button, Checkbox, FormControl, Heading, Image, Input, Radio, RadioGroup, Select, Stack, Text } from '@chakra-ui/react'
+import { Avatar, Box, Flex, Button, Checkbox, FormControl, Heading, Image, Input, Radio, RadioGroup, Select, Stack, Text, Alert, AlertIcon } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react';
 import styled from "styled-components";
-
+import {useNavigate, NavLink} from "react-router-dom"
 
 const Inputs = styled.input`
 width:98%;
@@ -17,6 +17,43 @@ const Signin = () => {
     const [checkedItems, setCheckedItems] = React.useState([false, false, false])
     const [isDisableds, setDisables] = useState(false)
     const [form, setform] = useState({});
+    const [error, setError] = useState({
+        status:false,
+        msg:"",
+        type:""
+      })
+    
+      
+      const navigate= useNavigate();
+    
+      const handlesubmit= (e)=>{
+        e.preventDefault();
+        const data= new FormData(e.currentTarget)
+        const actualdata={
+          email:data.get('email'),
+          password: data.get('password'),
+          confirm_password:data.get('confirmpassword')
+        }
+        
+        if(actualdata.email && actualdata.password)
+        {
+         if(actualdata.password === actualdata.confirm_password){
+         console.log(actualdata)
+         document.getElementById("form_data").reset()
+         setError({status:true, msg:"Registration Success", type:"seccess"})
+         navigate("/")
+        }
+        
+        else{
+            setError({status:false, msg:"Password and confirm password does not match", type:"error"})
+        }
+        }
+        else{
+          console.log("all fields are required");
+          setError({status:false, msg:"All Fields are Required", type:"error"})
+        }
+    }
+      
     
 
     const allChecked = checkedItems.every(Boolean)
@@ -57,7 +94,7 @@ const Signin = () => {
     <Box w="100%" display="flex" fontFamily="normal normal bold 28px/42px Open Sans" justifyContent="center" m={"50px"}>
     <Heading size={"xl"} marginLeft="-80px" marginBottom="-40px" fontWeight="700" textAlign={"center"} >Create Your Free Account</Heading>
      </Box>
-    <form>
+    <form onSubmit={handlesubmit} id="form_data">
      <Box display="flex" alignContent={"center"} justifyContent="center" p={5} w={"100%"} m="auto" flexDirection={"column"} boxShadow="rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px" >
 
    <Box w={"100%"} m={"auto"} py={5} >
@@ -225,8 +262,10 @@ const Signin = () => {
                                 }} />}
 
                     </form>
+                    {error.status ? <Alert status="success"><AlertIcon/>{error.msg}</Alert> :
+         <Alert status="error"><AlertIcon/>{error.msg}</Alert>}
                 </Box>
-
+              
                 <Box textAlign={"center"} mt={"125px"} fontSize>
                     <Text>Need help?</Text>
                     <Text>support@cronometer.com</Text>
