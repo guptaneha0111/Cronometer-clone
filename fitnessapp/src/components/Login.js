@@ -44,9 +44,10 @@ const Login = () => {
     if(actualdata.email==DataArray[i].email && actualdata.password==DataArray[i].password)
     {
       console.log(actualdata)
+      localStorage.setItem("email", (DataArray[i].email))
       document.getElementById("form_data").reset()
       setError({status:true, msg:"Login Success", type:"seccess"})
-      // navigate("/")
+      navigate("/dashboard")
     }
     else{
       setError({status:false, msg:"Incorrect Details", type:"error"})
