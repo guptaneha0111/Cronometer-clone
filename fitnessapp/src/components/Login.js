@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import {useNavigate, NavLink} from "react-router-dom"
 
+let DataArray=JSON.parse(localStorage.getItem("userdata"))
+console.log(DataArray)
 
 
 const Inputs = styled.input`
@@ -37,20 +39,26 @@ const Login = () => {
       email:data.get('email'),
       password: data.get('password')
     }
-    
-    if(actualdata.email && actualdata.password)
+    for(let i=0;i<DataArray.length;i++){
+      if(actualdata.email && actualdata.password){
+    if(actualdata.email==DataArray[i].email && actualdata.password==DataArray[i].password)
     {
       console.log(actualdata)
       document.getElementById("form_data").reset()
       setError({status:true, msg:"Login Success", type:"seccess"})
-      navigate("/")
+      // navigate("/")
     }
+    else{
+      setError({status:false, msg:"Incorrect Details", type:"error"})
+    }
+  }
     else{
       console.log("all fields are required");
       setError({status:false, msg:"All Fields are Required", type:"error"})
     }
+      
   }
-  
+}
   return (
     <>
      <Box w="100%" m="auto" p="1.5%" size={["xs", "sm", "md", "lg"]} bg="#262a3b!important">

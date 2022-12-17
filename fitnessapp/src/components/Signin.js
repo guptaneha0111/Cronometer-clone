@@ -12,7 +12,7 @@ border :1px solid black;
 padding-right:-15px;
 
 `
-
+let DataArray=[]
 const Signin = () => {
     const [checkedItems, setCheckedItems] = React.useState([false, false, false])
     const [isDisableds, setDisables] = useState(false)
@@ -23,7 +23,8 @@ const Signin = () => {
         type:""
       })
     
-      
+      const [email,setEmail]= useState("");
+      const [password, setPassword] = useState("");
       const navigate= useNavigate();
     
       const handlesubmit= (e)=>{
@@ -34,14 +35,15 @@ const Signin = () => {
           password: data.get('password'),
           confirm_password:data.get('confirmpassword')
         }
-        
+        DataArray.push(actualdata)
         if(actualdata.email && actualdata.password)
         {
          if(actualdata.password === actualdata.confirm_password){
          console.log(actualdata)
-         document.getElementById("form_data").reset()
-         setError({status:true, msg:"Registration Success", type:"seccess"})
-         navigate("/")
+         localStorage.setItem("userdata", JSON.stringify(DataArray))
+       setError({status:true, msg:"Registration Success", type:"seccess"})
+        document.getElementById("form_data").reset()
+        //  navigate("/")
         }
         
         else{
@@ -101,8 +103,8 @@ const Signin = () => {
 
 
 <Inputs type='email' onChange={Targetvalue} placeholder='Email Address' name='email' />
- <Inputs type='password' placeholder='password ' name='password' onChange={Targetvalue} />
-  <Inputs type='password' placeholder=' Confirm password ' name='confirmpassword' onChange={Targetvalue} />
+ <Inputs type='password' placeholder='password ' name='password' onChange={(e)=>setEmail(e.target.value)} />
+  <Inputs type='password' placeholder=' Confirm password ' name='confirmpassword' onChange={(e)=>setPassword(e.target.value)} />
 
 
   </Box>
