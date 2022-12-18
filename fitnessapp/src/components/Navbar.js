@@ -35,16 +35,17 @@ const Navbar = () => {
      window.location.href="/login"
   }
 
-  // function handleclickhome()
-  // {
-  //   window.location.href="/homepagedata"
-  // }
+  function handleclickhome()
+  {
+    window.location.href="/"
+  }
   return (
     <Box w="100%" m="auto" p="2.5%" size={["xs", "sm", "md", "lg"]}>
       <Flex justifyContent="space-between" alignItems="center">
         <Box w={["70%", "70%", "40%"]}>
           <Box w={["90%", "90%", "50%"]} textAlign="center">
-            <Image src="https://cdn1.cronometer.com/webflow/Cronometer-Logo---Mandarin.svg" alt="logo" w="100%" />
+            <Image src="https://cdn1.cronometer.com/webflow/Cronometer-Logo---Mandarin.svg"
+            onClick={handleclickhome} alt="logo" w="100%" cursor="pointer" />
          </Box>
          {/* <Box w={["90%", "90%", "50%"]} textAlign="center" marginTop="-50px" marginLeft="20px">
           <Heading size="lg">Coronometer</Heading>
