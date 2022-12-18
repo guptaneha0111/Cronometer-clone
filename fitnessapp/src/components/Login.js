@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import {useNavigate, NavLink} from "react-router-dom"
 
-let DataArray=JSON.parse(localStorage.getItem("userdata")) || []
+let DataArray=JSON.parse(localStorage.getItem("userdata")) 
 console.log(DataArray)
 
 

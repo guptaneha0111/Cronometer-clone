@@ -43,7 +43,7 @@ const Signin = () => {
          localStorage.setItem("userdata", JSON.stringify(DataArray))
        setError({status:true, msg:"Registration Success", type:"seccess"})
         document.getElementById("form_data").reset()
-        //  navigate("/")
+         navigate("/login")
         }
         
         else{
